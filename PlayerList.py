@@ -58,7 +58,7 @@ class PlayerList:
 
     def CheckText(self, pid, text):
         p = self[pid]
-        if p.ingame and p.NGword in text:
+        if p and p.ingame and p.NGword in text:
             return p
         else:
             return None
