@@ -27,7 +27,6 @@ async def SessionReply(FSM: NGFSM, session: CommandSession) -> bool:
         return True
     else:
         for r in FSM.reply:
-            logger.debug(msg='r.msg={},r.at_sender={}'.format(r.msg, r.at_sender))
             await session.send(r.msg, at_sender=r.at_sender)
         return FSM.reply[-1].pause
 
