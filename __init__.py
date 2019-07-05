@@ -45,22 +45,3 @@ async def _(session: CommandSession):
         if not await perm.check_permission(session.bot, session.ctx, perm.SUPERUSER):
             await session.send('请联系超级用户启动NG词语游戏')
             session.finish()
-
-
-class class_for_debug:
-    class child:
-        def __init__(self, s):
-            self.msg = 'test' + s
-
-    def __init__(self):
-        self.cl = [self.child('1'), self.child('2')]
-
-
-@on_command('debugng', only_to_me=False)
-async def __(session: CommandSession):
-    c = class_for_debug()
-    await session.send(c.cl[0].msg)
-    logger.debug('send one')
-    for i in c.cl:
-        await session.send(i.msg)
-    logger.debug('send all')
