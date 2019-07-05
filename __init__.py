@@ -10,7 +10,7 @@ async def NGWordGame(session: CommandSession):
         FSM = NGFSM(session.ctx['group_id'])
     else:
         sender = copy(session.ctx['sender'])
-        sender['isSU'] = perm.check_permission(session.bot, session.ctx, perm.SUPERUSER)
+        sender['isSU'] = await perm.check_permission(session.bot, session.ctx, perm.SUPERUSER)
         FSM = session.state['FSM']
         FSM.RecieveInput(sender, session.current_arg_text)
 
