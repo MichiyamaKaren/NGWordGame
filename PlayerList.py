@@ -37,7 +37,8 @@ class PlayerList:
             return self.Players[index]
 
     def append(self, player: Player):
-        self.Players.append(player)
+        if self[player.id] == -1:
+            self.Players.append(player)
         self.nplayer += 1
 
     # tell Players[i] to set NG word for Players[i+1]
@@ -53,12 +54,12 @@ class PlayerList:
     def SetNG(self, i, NG) -> bool:
         if not self.Players[i].NGword:
             self.nset += 1
-        self.Players[i].NGword = NG
+        self.Players[i].NGword = NG.lower()
         return self.nset == self.nplayer
 
     def CheckText(self, pid, text):
         p = self[pid]
-        if p and p.ingame and p.NGword in text:
+        if p and p.ingame and p.NGword in text.lower():
             return p
         else:
             return None

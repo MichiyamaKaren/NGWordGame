@@ -79,6 +79,6 @@ class NGFSM:
                     self.reply.append(
                         self.replymsg('游戏结束，{}胜利，ta的NG词是“{}”'.format(winner.name, winner.NGword), pause=False))
                 else:
-                    self.reply = [self.replymsg('游戏继续，还有{:d}位玩家'.format(self.playerlist.nplayer))]
+                    self.reply.append(self.replymsg('游戏继续，还有{:d}位玩家'.format(self.playerlist.nplayer)))
             else:
                 pass
