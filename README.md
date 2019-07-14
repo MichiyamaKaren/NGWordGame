@@ -21,4 +21,4 @@ ctx_id = context_id(ctx, mode='group')
 ```
 
 ## 实现
-（略）
+见[基于NoneBot的NG词语游戏插件](https://li-mz.github.io/2019/07/07/%E5%9F%BA%E4%BA%8ENoneBot%E7%9A%84NG%E8%AF%8D%E8%AF%AD%E6%B8%B8%E6%88%8F%E6%8F%92%E4%BB%B6/)
