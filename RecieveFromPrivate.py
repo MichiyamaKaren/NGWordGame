@@ -16,9 +16,11 @@ async def SetNG(session: CommandSession):
         await session.send('NG词不能为空，请重新设置')
     else:
         seti = (setteri + 1) % playerlist.nplayer
+        isallset = playerlist.SetNG(seti, text)
+        StorePlayer(playerlist)
+
         await session.send('你成功设置{}的NG词为“{}”'.format(playerlist.Players[seti].name, text))
         await session.bot.send_group_msg(group_id=playerlist.groupid, message=playerlist.Players[setteri].name + '完成设置')
-        if playerlist.SetNG(seti, text):
+        if isallset:
             bot = session.bot
             await bot.send_group_msg(group_id=playerlist.groupid, message='已完成所有NG词设置')
-        StorePlayer(playerlist)
