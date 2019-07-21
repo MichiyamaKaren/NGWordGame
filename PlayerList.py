@@ -1,4 +1,5 @@
 import shelve
+import os
 from typing import List, Tuple
 
 
@@ -37,7 +38,7 @@ class PlayerList:
             return self.Players[index]
 
     def append(self, player: Player):
-        if self[player.id] == -1:
+        if not self[player.id]:
             self.Players.append(player)
         self.nplayer += 1
 
@@ -83,13 +84,19 @@ class PlayerList:
 
 
 def StorePlayer(playerlist: PlayerList):
-    players = shelve.open('plugins/NGWordGame/players')
+    path = 'plugins/NGWordGame/Data'
+    if not os.path.exists(path):
+        os.mkdir(path)
+    with open(path + '/players.dat', 'w') as f:
+        pass
+
+    players = shelve.open(path + '/players')
     players['playerlist'] = playerlist
     players.close()
 
 
 def LoadPlayer() -> PlayerList:
-    players = shelve.open('plugins/NGWordGame/players')
+    players = shelve.open('plugins/NGWordGame/Data/players')
     playerlist = players['playerlist']
     players.close()
     return playerlist
